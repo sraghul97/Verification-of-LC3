@@ -1,0 +1,2 @@
+var g_data = {"data":[{"n":"work.LC3","id":104,"zf":1,"tc":67.37,"t":67.37},{"n":"work.data_mem_pkg","id":20,"zf":1,"tc":100.00,"g":100.00},{"n":"work.inst_mem_pkg","id":22,"zf":1,"tc":100.00,"g":100.00},{"n":"work.lc3_prediction_pkg","id":27,"zf":1,"tc":100.00,"a":100.00}]};
+processDuData(g_data);

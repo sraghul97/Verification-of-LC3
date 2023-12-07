@@ -1,0 +1,59 @@
+uvmf:
+  interfaces:
+    "writeback_out":
+      clock: "clock"
+      reset: "reset"
+      reset_assertion_level: "True"
+      ##existing_library_component: "True"
+      hdl_typedefs:        
+        - name: "vsr1_t"
+          type: "logic [15:0]"
+          
+        - name: "vsr2_t"
+          type: "logic [15:0]"
+          
+        - name: "psr_t"
+          type: "logic [2:0]"
+          
+        - name: "enable_writeback_out_t"
+          type: "logic"
+      ports:
+        - name: "vsr1"   
+          width: "16"        
+          dir: "input" 
+          reset_value: "'bz"
+          
+        - name: "vsr2"   
+          width: "16"        
+          dir: "input"
+          reset_value: "'bz"
+          
+        - name: "psr"
+          width: "3"
+          dir: "input"
+          reset_value: "'bz"
+          
+        - name: "enable_writeback_out"
+          width: "1"
+          dir: "input"
+          reset_value: "'bz"
+      transaction_vars:
+        - name: "vsr1"  
+          type: "bit [15:0]"
+          isrand: "False"
+          iscompare: "True"
+          
+        - name: "vsr2"  
+          type: "bit [15:0]"
+          isrand: "False"
+          iscompare: "True"
+          
+        - name: "psr"  
+          type: "bit [2:0]"
+          isrand: "False"
+          iscompare: "True"
+          
+        - name: "enable_writeback_out"  
+          type: "bit"
+          isrand: "False"
+          iscompare: "False"

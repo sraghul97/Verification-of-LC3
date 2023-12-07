@@ -1,0 +1,119 @@
+uvmf:
+  interfaces:
+    "writeback_in":
+      clock: "clock"
+      reset: "reset"
+      reset_assertion_level: "True"
+    ##  existing_library_component: "True"
+      hdl_typedefs:   
+        - name: "aluout_t"
+          type: "logic [15:0]" 
+          
+        - name: "W_Control_t"
+          type: "logic [1:0]"
+
+        - name: "pcout_t"
+          type: "logic [15:0]"
+          
+        - name: "memout_t"
+          type: "logic [15:0]"
+          
+        - name: "enable_writeback_t"
+          type: "logic"
+          
+        - name: "reg_t"
+          type: "logic [2:0]"
+          
+        - name: "npc_t"
+          type: "logic [15:0]"
+      ports:
+        - name: "aluout"   
+          width: "16"        
+          dir: "output" 
+          reset_value: "'bz"
+          
+        - name: "W_Control"   
+          width: "2"        
+          dir: "output" 
+          reset_value: "'bz"
+          
+        - name: "pcout"   
+          width: "16"        
+          dir: "output"
+          reset_value: "'bz"
+
+        - name: "memout"   
+          width: "16"        
+          dir: "output"
+          reset_value: "'bz"
+          
+        - name: "enable_writeback"   
+          width: "1"        
+          dir: "output"
+          reset_value: "'bz"
+          
+        - name: "sr1"   
+          width: "3"        
+          dir: "output"
+          reset_value: "'bz"
+          
+        - name: "sr2"   
+          width: "3"        
+          dir: "output"
+          reset_value: "'bz"
+          
+        - name: "dr"   
+          width: "3"        
+          dir: "output"
+          reset_value: "'bz"
+          
+        - name: "npc"   
+          width: "16"        
+          dir: "output"
+          reset_value: "'bz"
+      transaction_vars: 
+        - name: "aluout"  
+          type: "bit [15:0]"
+          isrand: "True"
+          iscompare: "True"
+        
+        - name: "W_Control"  
+          type: "bit [1:0]"
+          isrand: "True"
+          iscompare: "True"
+          
+        - name: "pcout"  
+          type: "bit [15:0]"
+          isrand: "True"
+          iscompare: "True"
+          
+        - name: "memout"  
+          type: "bit [15:0]"
+          isrand: "True"
+          iscompare: "True"
+          
+        - name: "enable_writeback"  
+          type: "bit"
+          isrand: "True"
+          iscompare: "True"
+          
+        - name: "sr1"  
+          type: "bit [2:0]"
+          isrand: "True"
+          iscompare: "True" 
+          
+        - name: "sr2"  
+          type: "bit [2:0]"
+          isrand: "True"
+          iscompare: "True" 
+          
+        - name: "dr"  
+          type: "bit [2:0]"
+          isrand: "True"
+          iscompare: "True" 
+          
+        - name: "npc"  
+          type: "bit [15:0]"
+          isrand: "True"
+          iscompare: "True" 
+        

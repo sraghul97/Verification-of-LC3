@@ -1,0 +1,42 @@
+# need analysis ports/exports to 
+# communicate between sub-envs?
+
+uvmf:
+  util_components:
+    "execute_predictor":
+      type: "predictor"
+      analysis_exports :
+        - name: "analysis_export"
+          type: "execute_in_transaction"
+      analysis_ports : 
+        - name: "expected_ap"
+          type: "execute_out_transaction"
+  environments:
+    "execute":
+      imports:
+      - name: lc3_prediction_pkg
+      - name: "execute_in_pkg"
+      - name: "execute_out_pkg"
+      agents:
+      - initiator_responder: INITIATOR
+        name: "execute_in_agent"
+        type: "execute_in"
+      - initiator_responder: RESPONDER
+        name: "execute_out_agent"
+        type: "execute_out"
+      analysis_components :
+       - name: "execute_pred"
+         type: "execute_predictor"
+      scoreboards:
+      - name: "execute_scoreboard"
+        sb_type: "uvmf_in_order_scoreboard"
+        trans_type: "execute_out_transaction"
+      tlm_connections:
+      - driver: "execute_in_agent.monitored_ap"
+        receiver: "execute_pred.analysis_export"
+      - driver: "execute_pred.expected_ap"
+        receiver: "execute_scoreboard.expected_analysis_export"
+      - driver: "execute_out_agent.monitored_ap"
+        receiver: "execute_scoreboard.actual_analysis_export"
+      
+      

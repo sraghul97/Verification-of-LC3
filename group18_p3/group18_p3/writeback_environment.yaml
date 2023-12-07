@@ -1,0 +1,35 @@
+uvmf:
+  util_components:
+    "writeback_predictor" :
+        type: "predictor"
+        analysis_exports :
+          - name: "pred_in_ae"
+            type: "writeback_in_transaction"
+        analysis_ports :
+          - name: "pred_out_ap"
+            type: "writeback_out_transaction"
+  environments:
+    "writeback" :
+      imports:
+        - name: "lc3_prediction_pkg"
+      agents :
+        - name: "agent_in" 
+          type: "writeback_in"
+          initiator_responder: "INITIATOR"
+        - name: "agent_out"
+          type: "writeback_out"
+          initiator_responder: "RESPONDER"
+      analysis_components :
+        - name: "pred"
+          type: "writeback_predictor"
+      scoreboards : 
+        - name: "sb"
+          sb_type: "uvmf_in_order_race_scoreboard"
+          trans_type: "writeback_out_transaction"
+      tlm_connections :
+        - driver:   "agent_in.monitored_ap"
+          receiver: "pred.pred_in_ae" 
+        - driver:   "pred.pred_out_ap"
+          receiver: "sb.expected_analysis_export"
+        - driver:   "agent_out.monitored_ap"
+          receiver: "sb.actual_analysis_export"

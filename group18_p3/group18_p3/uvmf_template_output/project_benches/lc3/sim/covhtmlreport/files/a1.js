@@ -1,0 +1,2 @@
+var g_data = {"198":{"pr":"/lc3_prediction_pkg","ty":2,"dui":27,"dun":"work.lc3_prediction_pkg","asserts":[{"n":["execute_model/#ublk#31460295#74/immed__123"],"h":[0,5]},{"n":["execute_model/#ublk#31460295#74/immed__122"],"h":[0,5]}],"ad":0}}
+processAssertionsData(g_data);
